@@ -1,0 +1,67 @@
+/* src/components/styles/appointments.css */
+@import './variables.css';
+
+/* Booking stepper */
+.booking-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.booking-stepper {
+  display: flex;
+  align-items: center;
+  margin: var(--spacing-xl) 0;
+}
+
+.stepper-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+}
+
+.step-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--neutral-light);
+  border: 2px solid var(--neutral-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.stepper-step.active .step-number {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: var(--text-light);
+}
+
+.step-name {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.stepper-step.active .step-name {
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+.stepper-line {
+  flex-grow: 1;
+  height: 2px;
+  background-color: var(--neutral-dark);
+  margin: 0 var(--spacing-sm);
+  margin-bottom: var(--spacing-xl);
+}
+
+/* Booking form */
+.booking-form {
+  background-color: var(--neutral-light);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: var(--spacing-xl);
+}
