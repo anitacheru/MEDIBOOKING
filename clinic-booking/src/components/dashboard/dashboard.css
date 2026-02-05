@@ -1,0 +1,248 @@
+/* ─── LAYOUT SHELL ─────────────────────────────────────────────── */
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+}
+.dashboard-main {
+  flex: 1;
+  overflow-y: auto;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── FILTER PILLS ─────────────────────────────────────────────── */
+.filter-pills {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+/* ─── EMPTY STATE ──────────────────────────────────────────────── */
+.empty-state {
+  padding: 28px;
+  text-align: center;
+  color: var(--color-gray-300);
+  font-size: 14px;
+}
+
+/* ─── CALENDAR LAYOUT (admin calendar page) ───────────────────── */
+.calendar-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 20px;
+  align-items: start;
+}
+.calendar-sidebar { /* right panel */ }
+
+/* ─── AVAILABILITY PAGE ────────────────────────────────────────── */
+.day-toggles {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.avail-day-block { margin-bottom: 16px; }
+.avail-day-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-gray-500);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 6px;
+}
+.avail-slot-row {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+/* ─── PRESCRIPTION FORM ────────────────────────────────────────── */
+.rx-medicines-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.rx-medicines-header label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-gray-500);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+.rx-med-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.4fr 1fr auto;
+  gap: 8px;
+  margin-bottom: 8px;
+  align-items: end;
+}
+.rx-med-row .form-control { margin-bottom: 0; }
+
+/* ─── PRESCRIPTION LIST ITEMS ──────────────────────────────────── */
+.rx-card { padding: 14px 18px !important; }
+.rx-med-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  width: 100%;
+  padding: 4px 0;
+}
+.rx-num {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--color-black);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  flex-shrink: 0;
+}
+.rx-notes {
+  font-size: 12px;
+  color: var(--color-gray-500);
+  background: var(--color-off-white);
+  padding: 8px 12px;
+  border-radius: var(--radius-md);
+  width: 100%;
+}
+
+/* ─── BOOKING WIZARD ───────────────────────────────────────────── */
+.wizard-wrap { max-width: 600px; margin: 0 auto; }
+
+/* Progress */
+.wizard-progress {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 28px;
+  padding: 0 4px;
+}
+.wizard-line {
+  flex: 1;
+  height: 2px;
+  margin-top: 14px;
+}
+.wizard-dot-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+.wizard-dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+.wizard-label {
+  font-size: 11px;
+  margin-top: 5px;
+  text-align: center;
+  max-width: 70px;
+}
+
+/* Disease grid */
+.disease-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+/* Match badge */
+.match-badge {
+  margin-top: 14px;
+  padding: 10px 14px;
+  background: var(--color-off-white);
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  color: var(--color-gray-500);
+  border: 1px solid var(--color-gray-200);
+}
+
+/* Doctor pick card */
+.doctor-pick {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1.5px solid var(--color-gray-200);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  margin-bottom: 8px;
+  transition: all 0.15s;
+  background: var(--color-white);
+}
+.doctor-pick:hover { border-color: var(--color-black); background: var(--color-off-white); }
+.doctor-pick.selected { border-color: var(--color-black); background: var(--color-off-white); }
+
+/* Date + Slot two-col */
+.date-slot-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.slot-col {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Confirm summary */
+.confirm-summary {
+  background: var(--color-off-white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-gray-200);
+  padding: 18px;
+  margin-bottom: 20px;
+}
+.confirm-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--color-gray-100);
+  font-size: 13px;
+}
+.confirm-row:last-child { border-bottom: none; }
+.confirm-label { color: var(--color-gray-400); }
+.confirm-value { font-weight: 600; }
+.confirm-notes {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--color-gray-500);
+  padding-top: 10px;
+  border-top: 1px solid var(--color-gray-100);
+}
+
+/* Wizard nav buttons */
+.wizard-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+/* ─── RESPONSIVE ───────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .dashboard-layout { flex-direction: column; }
+  .calendar-layout  { grid-template-columns: 1fr; }
+  .date-slot-grid   { grid-template-columns: 1fr; }
+  .rx-med-row       { grid-template-columns: 1fr 1fr; }
+  .rx-med-row .form-control:nth-child(1) { grid-column: 1 / -1; }
+}
+@media (max-width: 480px) {
+  .disease-grid { grid-template-columns: 1fr; }
+  .rx-med-row   { grid-template-columns: 1fr; }
+}

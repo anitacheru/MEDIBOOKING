@@ -1,0 +1,63 @@
+/* ─── variables.css ──────────────────────────────────────────────
+   Central design-token file.  Import at the top of every other
+   stylesheet in the styles/ folder:
+     @import './variables.css';
+*/
+
+:root {
+  /* ── core palette ── */
+  --color-black:      #0f0f0f;
+  --color-black-soft: #1a1a1a;
+  --color-white:      #ffffff;
+  --color-off-white:  #f7f7f5;
+
+  /* ── grays ── */
+  --color-gray-100: #f0f0ee;
+  --color-gray-200: #e0e0dd;
+  --color-gray-300: #c8c8c4;
+  --color-gray-400: #9a9a96;
+  --color-gray-500: #6b6b66;
+  --color-gray-600: #4a4a45;
+
+  /* ── status ── */
+  --color-green:    #0a7340;
+  --color-green-bg: #eafaf3;
+  --color-orange:   #c47200;
+  --color-orange-bg:#fef3e0;
+  --color-red:      #c0392b;
+  --color-red-bg:   #fef0ee;
+  --color-blue:     #1a73b8;
+  --color-blue-bg:  #eef4fb;
+
+  /* ── spacing ── */
+  --space-xs:  4px;
+  --space-sm:  8px;
+  --space-md:  12px;
+  --space-base:16px;
+  --space-lg:  20px;
+  --space-xl:  24px;
+  --space-2xl: 32px;
+  --space-3xl: 48px;
+
+  /* ── layout ── */
+  --sidebar-width: 230px;
+  --header-height: 56px;
+
+  /* ── radii ── */
+  --radius-sm:   4px;
+  --radius-md:   6px;
+  --radius-lg:   8px;
+  --radius-xl:   12px;
+  --radius-2xl:  16px;
+  --radius-full: 9999px;
+
+  /* ── shadows ── */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md: 0 2px 8px rgba(0,0,0,0.08);
+  --shadow-lg: 0 4px 16px rgba(0,0,0,0.10);
+  --shadow-xl: 0 8px 32px rgba(0,0,0,0.12);
+
+  /* ── fonts ── */
+  --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'DM Mono', 'Fira Code', monospace;
+}

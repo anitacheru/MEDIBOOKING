@@ -1,94 +1,102 @@
-// src/components/auth/Login.jsx
 import React, { useState } from 'react';
-import '../styles/auth.css';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../App';
+import { authAPI } from '../../services/api';
+import './auth.css';
 
 const Login = () => {
+  const navigate = useNavigate();
+  const { login } = useAuth();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const handleLogin = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add validation and API call here
-    if (!email || !password) {
-      setError('Please enter both email and password');
-      return;
+    setError('');
+
+    if (!email || !password)
+      return setError('Please enter email and password.');
+
+    setLoading(true);
+    try {
+      const res = await authAPI.login({ email, password });
+      login(res.data.token, res.data.user);
+      navigate(`/${res.data.user.role}`);
+    } catch (err) {
+      setError(err.response?.data?.message || 'Login failed. Please check your credentials.');
+    } finally {
+      setLoading(false);
     }
-    
-    // Simulate login - replace with actual API call
-    console.log('Logging in with:', { email, password });
-    // Redirect to dashboard on success
   };
 
   return (
     <div className="auth-container">
       <div className="auth-left">
         <div className="auth-logo">
-          <h1>MediBook</h1>
+          <svg width="36" height="36" viewBox="0 0 28 28" fill="none">
+            <rect width="28" height="28" rx="7" fill="#fff"/>
+            <rect x="12" y="6"  width="4" height="16" rx="2" fill="#0f0f0f"/>
+            <rect x="6"  y="12" width="16" height="4"  rx="2" fill="#0f0f0f"/>
+            <polyline points="10,22 13,22 15,18 17,25 19,20 21,22" stroke="#0f0f0f" strokeWidth="1.8" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+          <h1>Medi<span style={{ fontWeight: 300, opacity: 0.7 }}>Book</span></h1>
         </div>
         <div className="auth-welcome">
-          <h2>Welcome to MediBook</h2>
-          <p>Schedule appointments with doctors easily and manage your healthcare journey in one place.</p>
+          <h2>Welcome<br/>back.</h2>
+          <p>Sign in to your account to continue managing your health and appointments.</p>
+        </div>
+        <div className="auth-features">
+          <div className="auth-feature-item"><span className="feature-check">✓</span>Secure login</div>
+          <div className="auth-feature-item"><span className="feature-check">✓</span>Instant notifications</div>
+          <div className="auth-feature-item"><span className="feature-check">✓</span>All your data in one place</div>
         </div>
       </div>
-      
+
       <div className="auth-right">
         <div className="auth-card">
           <h2>Sign In</h2>
-          
+          <p className="auth-subtitle">Enter your credentials to access your account.</p>
+
           {error && <div className="error-message">{error}</div>}
-          
-          <form onSubmit={handleLogin}>
+
+          <form onSubmit={handleSubmit}>
             <div className="form-group">
-              <label htmlFor="email">Email or Phone</label>
-              <input 
-                type="text" 
-                id="email" 
-                className="form-control" 
-                value={email} 
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email or phone"
+              <label>Email</label>
+              <input
+                type="email"
+                className="form-control"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                placeholder="you@example.com"
               />
             </div>
-            
+
             <div className="form-group">
-              <label htmlFor="password">Password</label>
-              <input 
-                type="password" 
-                id="password" 
-                className="form-control" 
-                value={password} 
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter your password"
+              <label>Password</label>
+              <input
+                type="password"
+                className="form-control"
+                value={password}
+                onChange={e => setPassword(e.target.value)}
+                placeholder="••••••"
               />
             </div>
-            
-            <div className="form-footer">
-              <div className="forgot-password">
-                <a href="/forgot-password">Forgot Password?</a>
-              </div>
+
+            <div className="auth-form-footer">
+              <Link to="/forgot-password" className="forgot-link">Forgot password?</Link>
             </div>
-            
-            <button type="submit" className="btn-primary btn-full">Sign In</button>
-            
-            <div className="auth-divider">
-              <span>OR</span>
-            </div>
-            
-            <div className="social-login">
-              <button type="button" className="btn-social btn-google">
-                <span className="social-icon">G</span> Continue with Google
-              </button>
-              
-              <button type="button" className="btn-social btn-facebook">
-                <span className="social-icon">f</span> Continue with Facebook
-              </button>
-            </div>
-            
-            <div className="auth-register">
-              <p>Don't have an account? <a href="/register">Sign Up</a></p>
-            </div>
+
+            <button type="submit" className="btn btn-primary btn-full" disabled={loading}>
+              {loading ? 'Signing in...' : 'Sign In'}
+            </button>
           </form>
+
+          <div className="auth-register">
+            <p>Don't have an account? <Link to="/register">Create one</Link></p>
+          </div>
         </div>
       </div>
     </div>

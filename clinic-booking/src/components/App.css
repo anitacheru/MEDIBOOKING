@@ -1,0 +1,247 @@
+/* ─── BUTTONS ────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-gray-200);
+  background: var(--color-white);
+  color: var(--color-black);
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+.btn:hover { background: var(--color-gray-100); }
+.btn:active { transform: translateY(1px); }
+
+.btn-primary {
+  background: var(--color-black);
+  color: var(--color-white);
+  border-color: var(--color-black);
+}
+.btn-primary:hover { background: var(--color-black-soft); }
+
+.btn-sm { padding: 5px 10px; font-size: 12px; }
+.btn-full { width: 100%; justify-content: center; }
+
+.btn-danger { color: var(--color-red); border-color: var(--color-red-bg); }
+.btn-danger:hover { background: var(--color-red-bg); }
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--color-gray-200);
+  color: var(--color-gray-600);
+}
+.btn-outline:hover { border-color: var(--color-black); color: var(--color-black); background: var(--color-gray-100); }
+
+/* ─── CARDS ──────────────────────────────────────────────────────── */
+.card {
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-lg);
+}
+.card-header {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--color-gray-100);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.card-header h3 { font-size: 14px; font-weight: 600; }
+.card-body { padding: 18px; }
+
+/* ─── INDICATORS (Frappe badges) ─────────────────────────────────── */
+.indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 12px;
+}
+.indicator::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+.indicator-green { color: var(--color-green); background: var(--color-green-bg); }
+.indicator-green::before { background: var(--color-green); }
+.indicator-orange { color: var(--color-orange); background: var(--color-orange-bg); }
+.indicator-orange::before { background: var(--color-orange); }
+.indicator-red { color: var(--color-red); background: var(--color-red-bg); }
+.indicator-red::before { background: var(--color-red); }
+.indicator-blue { color: var(--color-blue); background: var(--color-blue-bg); }
+.indicator-blue::before { background: var(--color-blue); }
+
+/* ─── LIST ROWS (Frappe style) ───────────────────────────────────── */
+.list-row {
+  display: flex;
+  align-items: center;
+  padding: 11px 18px;
+  border-bottom: 1px solid var(--color-gray-100);
+  font-size: 13px;
+  transition: background 0.1s;
+}
+.list-row:last-child { border-bottom: none; }
+.list-row:hover { background: var(--color-off-white); }
+.list-row-name { font-weight: 500; flex: 1; }
+.list-row-sub { color: var(--color-gray-400); font-size: 12px; margin-top: 1px; }
+
+/* ─── AVATAR ─────────────────────────────────────────────────────── */
+.avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--color-gray-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-gray-600);
+  flex-shrink: 0;
+}
+
+/* ─── FORM ELEMENTS ──────────────────────────────────────────────── */
+.form-group { margin-bottom: 16px; }
+.form-group label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-gray-500);
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+.form-control {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  background: var(--color-white);
+  color: var(--color-black);
+  transition: border-color 0.15s;
+}
+.form-control:focus { outline: none; border-color: var(--color-black); }
+.form-control::placeholder { color: var(--color-gray-400); }
+textarea.form-control { min-height: 80px; resize: vertical; }
+
+/* ─── TABS ───────────────────────────────────────────────────────── */
+.tab-bar {
+  display: flex;
+  border-bottom: 1px solid var(--color-gray-200);
+}
+.tab-btn {
+  padding: 10px 18px;
+  font-size: 13px;
+  color: var(--color-gray-400);
+  border-bottom: 2px solid transparent;
+  font-weight: 500;
+  transition: all 0.15s;
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+.tab-btn:hover { color: var(--color-black); }
+.tab-btn.active { color: var(--color-black); border-bottom-color: var(--color-black); font-weight: 600; }
+
+/* ─── CONTENT PADDING ────────────────────────────────────────────── */
+.content-pad { padding: 24px 28px; }
+
+/* ─── STAT CARDS ─────────────────────────────────────────────────── */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 22px;
+}
+.stat-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+}
+.stat-value { font-size: 26px; font-weight: 700; letter-spacing: -0.5px; }
+.stat-label { font-size: 12px; color: var(--color-gray-400); margin-top: 3px; }
+.stat-sub { font-size: 11px; color: var(--color-gray-300); margin-top: 2px; }
+
+/* ─── CALENDAR ───────────────────────────────────────────────────── */
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.cal-day-header { font-size: 11px; font-weight: 600; color: var(--color-gray-400); text-align: center; padding: 6px 0; text-transform: uppercase; }
+.cal-day {
+  text-align: center;
+  padding: 8px 4px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s;
+  position: relative;
+}
+.cal-day:hover { background: var(--color-gray-100); }
+.cal-day.today { font-weight: 700; }
+.cal-day.selected { background: var(--color-black); color: var(--color-white); }
+.cal-day.has-appt::after { content: ''; position: absolute; bottom: 3px; left: 50%; transform: translateX(-50%); width: 5px; height: 5px; background: var(--color-black); border-radius: 50%; }
+.cal-day.selected.has-appt::after { background: var(--color-white); }
+.cal-day.past { opacity: 0.35; cursor: not-allowed; }
+.cal-nav { display: flex; align-items: center; justify-content: space-between; padding: 0 4px 12px; }
+.cal-nav span { font-size: 14px; font-weight: 600; }
+
+/* ─── SLOTS ──────────────────────────────────────────────────────── */
+.slot {
+  padding: 10px;
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-md);
+  text-align: center;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s;
+  background: var(--color-white);
+}
+.slot:hover:not(.booked) { border-color: var(--color-black); background: var(--color-off-white); }
+.slot.selected { border-color: var(--color-black); background: var(--color-black); color: var(--color-white); font-weight: 600; }
+.slot.booked { background: var(--color-gray-100); color: var(--color-gray-300); cursor: not-allowed; text-decoration: line-through; }
+
+/* ─── MODAL ──────────────────────────────────────────────────────── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal {
+  background: var(--color-white);
+  border-radius: var(--radius-xl);
+  width: 440px;
+  max-width: 92vw;
+  box-shadow: var(--shadow-xl);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+.modal-header {
+  padding: 18px 22px 14px;
+  border-bottom: 1px solid var(--color-gray-100);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.modal-header h3 { font-size: 15px; font-weight: 600; }
+.modal-body { padding: 20px 22px; }
+.modal-footer { padding: 14px 22px; border-top: 1px solid var(--color-gray-100); display: flex; justify-content: flex-end; gap: 8px; }
+
+/* ─── RESPONSIVE ─────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .stats-row { grid-template-columns: repeat(2, 1fr); }
+  .content-pad { padding: 16px; }
+}
+@media (max-width: 480px) {
+  .stats-row { grid-template-columns: 1fr 1fr; }
+}
