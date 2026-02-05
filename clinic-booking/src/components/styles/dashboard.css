@@ -1,0 +1,38 @@
+@import './variables.css';
+
+/* ─── LAYOUT SHELL ─────────────────────────────────────────── */
+.dashboard-layout { display: flex; min-height: 100vh; }
+.dashboard-main   { flex: 1; overflow-y: auto; max-height: 100vh; display: flex; flex-direction: column; }
+
+/* ─── CALENDAR LAYOUT (admin calendar page) ───────────────── */
+.calendar-layout     { display: grid; grid-template-columns: 1fr 320px; gap: 20px; align-items: start; }
+.calendar-sidebar    { /* right panel */ }
+
+/* ─── AVAILABILITY ─────────────────────────────────────────── */
+.day-toggles         { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; }
+.avail-day-block     { margin-bottom: 16px; }
+.avail-day-label     { font-size: 11px; font-weight: 700; color: var(--color-gray-500); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 6px; }
+.avail-slot-row      { display: flex; gap: 6px; flex-wrap: wrap; }
+
+/* ─── PRESCRIPTION FORM ────────────────────────────────────── */
+.rx-medicines-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.rx-medicines-header label { font-size: 11px; font-weight: 600; color: var(--color-gray-500); text-transform: uppercase; letter-spacing: 0.6px; margin: 0; }
+.rx-med-row          { display: grid; grid-template-columns: 2fr 1fr 1.4fr 1fr auto; gap: 8px; margin-bottom: 8px; align-items: end; }
+.rx-med-row .form-control { margin-bottom: 0; }
+
+/* ─── PRESCRIPTION LIST ────────────────────────────────────── */
+.rx-card     { padding: 14px 18px !important; }
+.rx-med-item { display: flex; align-items: center; gap: 10px; font-size: 13px; width: 100%; padding: 4px 0; }
+.rx-num      { width: 24px; height: 24px; border-radius: 50%; background: var(--color-black); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; font-family: var(--font-mono); flex-shrink: 0; }
+.rx-notes    { font-size: 12px; color: var(--color-gray-500); background: var(--color-off-white); padding: 8px 12px; border-radius: var(--radius-md); width: 100%; }
+
+/* ─── RESPONSIVE ───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .dashboard-layout { flex-direction: column; }
+  .calendar-layout  { grid-template-columns: 1fr; }
+  .rx-med-row       { grid-template-columns: 1fr 1fr; }
+  .rx-med-row .form-control:nth-child(1) { grid-column: 1 / -1; }
+}
+@media (max-width: 480px) {
+  .rx-med-row { grid-template-columns: 1fr; }
+}
