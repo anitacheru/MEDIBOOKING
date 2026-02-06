@@ -6,7 +6,7 @@ import {
   DOCTORS, PATIENTS, APPOINTMENTS_SEED, PRESCRIPTIONS_SEED,
   getInitials, statusClass
 } from '../../data';
-import './dashboard.css';
+import '../dashboard/dashboard.css';
 
 // ─── NAV ICONS (inline SVG snippets) ───────────────────────────────
 const Icons = {

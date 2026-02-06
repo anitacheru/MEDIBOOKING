@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../../App';
-import { authAPI } from '../../services/api';
-import './auth.css';
+import { useAuth } from "../App.jsx";
+import { authAPI } from '../services/api.js';
+import '../auth/auth.css';
+import DoctorDashboard from '../dashboard/DoctorDashboard.jsx';
 
 const Login = () => {
-  const navigate = useNavigate();
-  const { login } = useAuth();
+ const navigate = useNavigate();
+  const { login } = useAuth(); 
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -24,9 +25,12 @@ const Login = () => {
     try {
       const res = await authAPI.login({ email, password });
       login(res.data.token, res.data.user);
-      navigate(`/${res.data.user.role}`);
-    } catch (err) {
+      console.log(res.data);
+      console.log("ROLE:", res.data.user?.role);
+    }
+     catch (err) {
       setError(err.response?.data?.message || 'Login failed. Please check your credentials.');
+      console.error('Login error:', err);
     } finally {
       setLoading(false);
     }

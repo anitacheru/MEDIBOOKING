@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import './Notifications.css';
+import '../common/Notification.css';
 
 const Notifications = ({ notification, onDismiss }) => {
   useEffect(() => {
