@@ -1,8 +1,8 @@
 import React from 'react';
-import { useAuth } from '../../App';
+import { useAuth } from "../App.jsx";
 import { useNavigate } from 'react-router-dom';
 import NotificationBell from './NotificationBell';
-import './Navbar.css';
+import '../common/navbar.css';
 
 const Navbar = ({ pageTitle, breadcrumb }) => {
   const { user, logout } = useAuth();

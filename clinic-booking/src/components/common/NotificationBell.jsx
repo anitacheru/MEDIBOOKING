@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import api from '../../services/api';
-import './NotificationBell.css';
+import api from '../services/api.js';
+import '../common/NotificationBell.css';
 
 const NotificationBell = () => {
   const [unreadCount, setUnreadCount] = useState(0);

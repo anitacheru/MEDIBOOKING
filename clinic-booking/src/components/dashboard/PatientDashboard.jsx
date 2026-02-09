@@ -6,7 +6,7 @@ import {
   DISEASE_SPECIALTY_MAP, DOCTORS, APPOINTMENTS_SEED, PRESCRIPTIONS_SEED,
   generateSlots, getInitials, statusClass
 } from '../../data';
-import './dashboard.css';
+import '../dashboard/dashboard.css';
 
 // ─── ICONS ──────────────────────────────────────────────────────────
 const Icons = {

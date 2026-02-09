@@ -3,7 +3,7 @@ import Sidebar  from '../common/Sidebar';
 import Navbar   from '../common/Navbar';
 import Notifications from '../common/Notifications';
 import { APPOINTMENTS_SEED, PRESCRIPTIONS_SEED, PATIENTS, getInitials, statusClass } from '../../data';
-import './dashboard.css';
+import '../dashboard/dashboard.css';
 
 // ─── NAV ICONS ──────────────────────────────────────────────────────
 const Icons = {

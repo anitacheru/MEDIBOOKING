@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../../App';
-import { authAPI } from '../../services/api';
-import './auth.css';
+import { useAuth } from "../App.jsx";
+import { authAPI } from '../services/api.js';
+import '../auth/auth.css';
 
 const Login = () => {
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login } = useAuth(); 
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -23,10 +23,35 @@ const Login = () => {
     setLoading(true);
     try {
       const res = await authAPI.login({ email, password });
+      
+      console.log("Login successful!");
+      console.log("Full response:", res.data);
+      console.log("User:", res.data.user);
+      console.log("Role:", res.data.user?.role);
+      
+      // Call login to save user data
       login(res.data.token, res.data.user);
-      navigate(`/${res.data.user.role}`);
+      
+      // Navigate based on role
+      const userRole = res.data.user?.role?.toLowerCase();
+      
+      if (userRole === 'admin') {
+        console.log("Navigating to /admin");
+        navigate('/admin');
+      } else if (userRole === 'doctor') {
+        console.log("Navigating to /doctor");
+        navigate('/doctor');
+      } else if (userRole === 'patient') {
+        console.log("Navigating to /patient");
+        navigate('/patient');
+      } else {
+        console.error('Unknown role:', userRole);
+        setError(`Invalid user role: ${userRole}. Please contact support.`);
+      }
+      
     } catch (err) {
       setError(err.response?.data?.message || 'Login failed. Please check your credentials.');
+      console.error('Login error:', err);
     } finally {
       setLoading(false);
     }
