@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useRef, useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 
@@ -7,21 +7,20 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(() => {
-    // Load user from localStorage if available
-    const saved = localStorage.getItem('user');
+    const saved = localStorage.getItem('medibook_user');
     return saved ? JSON.parse(saved) : null;
   });
 
-  const login = (token, user) => {
-    setUser(user);
-    setToken(token);
-    localStorage.setItem('user', JSON.stringify(token));
-    localStorage.setItem('user', JSON.stringify(user));
-  };;
+  const login = (token, userData) => {
+    setUser(userData);
+    localStorage.setItem('medibook_token', token);
+    localStorage.setItem('medibook_user', JSON.stringify(userData));
+  };
 
   const logout = () => {
     setUser(null);
-    localStorage.removeItem('user');
+    localStorage.removeItem('medibook_token');
+    localStorage.removeItem('medibook_user');
   };
 
   return (
@@ -81,8 +80,14 @@ const App = () => (
 // ─── ROOT REDIRECT ──────────────────────────────────────────────
 const RootRedirect = () => {
   const { user } = useAuth();
-  if (!user) return <Navigate to="/dashboard" replace />;
-  return <Navigate to={`/${user.role}`} replace />;
+  
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
+  
+  // Redirect based on role
+  const role = user.role?.toLowerCase();
+  return <Navigate to={`/${role}`} replace />;
 };
 
 export default App;
