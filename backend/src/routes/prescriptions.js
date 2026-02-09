@@ -2,7 +2,7 @@ const express      = require('express');
 const Prescription = require('../models/Prescription');
 const Doctor       = require('../models/Doctor');
 const User         = require('../models/User');
-const { verifyToken, authorizeRoles } = require('../src/middleware/auth');
+const { verifyToken, authorizeRoles } = require('../middleware/auth');
 const { notifyPrescriptionIssued } = require('../services/notificationService');
 
 const router = express.Router();
